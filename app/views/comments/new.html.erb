@@ -1,0 +1,31 @@
+<div class="container">
+
+<!-- コメントnewページ -->
+<!-- トピックボックス -->
+     <div class="row">
+        <div class="col s12 m20">
+          <div class="card">
+            <div class="card-content">
+              <span class= "card-title"><%= @topic.title%></span>
+              <span>投稿者：</span><%= @topic.user.nickname %>
+              <%= simple_format(@topic.text) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- コメントフォーム -->
+
+<%= form_for [@topic, @comment] do |f| %>
+      <p>
+        コメントしてね
+      </p>
+      <%= f.text_field :comment, placeholder: 'comment', type: 'text' %>
+       <%= button_tag type: 'submit', class: 'btn btn--block'  do %>
+       コメントする<i class="icon-arrow-right"></i>
+    <% end %>
+    <% end %>
+
+
+
+</div>

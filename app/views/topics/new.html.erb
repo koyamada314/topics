@@ -1,0 +1,20 @@
+<div class="container">
+
+<!-- トピック入力フォーム -->
+
+
+<%= form_for [@topic] do |f| %>
+      <h3>
+        投稿する
+      </h3>
+      <%= f.label :nickname, value: current_user.nickname %>
+      <%= f.text_field :title, placeholder: 'title', type: 'text' %>
+      <%= f.text_area :text  %>
+       <%= button_tag type: 'submit', class: 'btn btn--block'  do %>
+       投稿する<i class="icon-arrow-right"></i>
+    <% end %>
+    <% end %>
+
+
+</div>
+

@@ -1,0 +1,35 @@
+<!-- lendered topic -->
+
+<div class="container">
+<div class="row-item">
+        <div class="col s12 m20">
+          <div class="card ">
+            <div class="card-image">
+            </div>
+            <div class="card-content">
+               <%= simple_format(topic.text) %>
+              <h1><%= topic.title %></h1>
+              <span>投稿者：</span><%= topic.user.nickname %>
+            </div>
+            <div class="card-action">
+              <li>
+              <%= link_to "この記事を読む", topic_path(topic.id), method: :get %>
+              </li>
+              <% if user_signed_in? && current_user.id == topic.user_id %>
+              <li>
+              <%= link_to "この記事を削除", "/topics/#{topic.id}", method: :delete %>
+              </li>
+              <li>
+                <%= link_to "この記事を編集", "/topics/#{topic.id}/edit", method: :get %>
+              </li>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</div>
+
+
+

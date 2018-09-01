@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Topics</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+    <script>
+      $(function(){
+        $('#infpage').infinitescroll({
+          navSelector : "nav.pagination",
+          nextSelector : "nav.pagination a[rel=next]",
+          itemSelector : ".row-item"
+        });
+        $("#pagebutton").css("visibility","hidden");
+      });
+
+    </script>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<body>
+  <nav class="#536dfe indigo accent-2">
+  <div class="nav wrapper">
+
+   <a href ="/" class= "brand-logo">Topics</a>
+    <ul id = "nav-mobile" class = "right hide-on-med-and-down">
+      <!-- 投稿フォームボタン -->
+       <%= link_to '/topics/new', method: :get, class: "btn-floating btn-large waves-effect waves-light blue" do %>
+       <i class="material-icons" >create</i>
+       <% end %>
+
+     <% if user_signed_in? %>
+     <!-- マイページボタン -->
+      <%= link_to '/users/current_user.id', method: :get, class: "btn-floating btn-large waves-effect waves-light blue" do %>
+      <i class="material-icons" >person</i>
+      <% end %>
+<!-- サインアウトボタン -->
+　　　 <%= link_to '/users/sign_out', method: :delete, class: 'btn-floating btn-large waves-effect waves-light blue' do %>
+        <i class="material-icons">launch</i>
+     <% end %>
+      <% else %>
+       <!-- サインインボタン -->
+       <%= link_to new_user_session_path, method: :get, class: 'btn-floating btn-large waves-effect waves-light blue' do %>
+        <i class="material-icons">input</i>
+       <% end %>
+
+     <% end %>
+    </ul>
+  </div>
+</nav>
+    <%= yield %>
+  </body>
+</html>

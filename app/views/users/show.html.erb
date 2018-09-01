@@ -1,0 +1,6 @@
+<div class="container">
+<p><%= @nickname %>さんのTopic一覧</p>
+  <% @topics.each do |topic| %>
+    <%= render partial: "topics/topic", locals: { topic: topic } %>
+  <% end %>
+</div>

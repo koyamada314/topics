@@ -1,0 +1,12 @@
+<div class="container">
+        <!-- Page Content goes here -->
+ <% @topics.each do |topic| %>
+    <div id= "infpage">
+    <%= render partial: "topic", locals: { topic: topic } %>
+    </div>
+  <% end %>
+　<div id ="pagebutton">
+  <%= paginate @topics %>
+ </div>
+</div>
+</html>
