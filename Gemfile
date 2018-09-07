@@ -66,5 +66,7 @@ gem 'devise'
 gem 'pry-rails'
 gem "jquery-turbolinks"
 gem "kaminari"
-gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: :production
+
+group :production do
+  gem 'unicorn'
+end
